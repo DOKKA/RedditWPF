@@ -20,7 +20,7 @@
 					<telerik:RadListBoxItem Content="RadDocking control" />
 					<telerik:RadListBoxItem Content="RadScheduleView control" />
 					<telerik:RadListBoxItem Content="RadMenu control" />
-					<telerik:RadListBoxItem Content="RadGridView control" />
+					<telerik:RadListBoxItem Content="RadGridView  control" />
 					<telerik:RadListBoxItem Content="RadGauge control" />
 					<telerik:RadListBoxItem Content="RadWindow control" />
 					<telerik:RadListBoxItem Content="RadRibbonView control" />

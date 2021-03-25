@@ -1,0 +1,54 @@
+﻿<Window x:Class="RedditWPF.MainWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                Title="MainWindow" Height="600" Width="1000">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition x:Name="firstColumn" Width="Auto"/>
+			<ColumnDefinition Width="5"/>
+			<ColumnDefinition x:Name="midColumn" Width="Auto"/>
+			<ColumnDefinition Width="5"/>
+			<ColumnDefinition />
+			<ColumnDefinition Width="5"/>
+			<ColumnDefinition x:Name="lastColumn"  Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<telerik:RadExpander Header="Left Panel" ExpandDirection="Left" IsExpanded="True" Background="#BFDBFF" Grid.Column="0" HorizontalAlignment="Stretch"  PreviewCollapsed="RadExpander_PreviewCollapsed">
+
+				<telerik:RadListBox VerticalAlignment="Stretch" SelectedIndex="0">
+					<telerik:RadListBoxItem Content="RadDocking control" />
+					<telerik:RadListBoxItem Content="RadScheduleView control" />
+					<telerik:RadListBoxItem Content="RadMenu control" />
+					<telerik:RadListBoxItem Content="RadGridView control" />
+					<telerik:RadListBoxItem Content="RadGauge control" />
+					<telerik:RadListBoxItem Content="RadWindow control" />
+					<telerik:RadListBoxItem Content="RadRibbonView control" />
+					<telerik:RadListBoxItem Content="RadTabControl control" />
+					<telerik:RadListBoxItem Content="RadTransition control" />
+					<telerik:RadListBoxItem Content="RadComboBox control" />
+				</telerik:RadListBox>
+
+		</telerik:RadExpander>
+
+		<GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Red" />
+
+		<telerik:RadExpander Grid.Column="2" Header="Left Panel" ExpandDirection="Left" IsExpanded="True" Background="#BFDBFF"  HorizontalAlignment="Stretch" PreviewCollapsed="RadExpander_PreviewCollapsed_2">
+			<Grid>
+				<TextBlock  Text="Lorem ipsum dolor sit" Background="White"/>
+			</Grid>
+		</telerik:RadExpander>
+
+		<GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Red" />
+
+		<TextBlock Grid.Column="4" Text="Lorem ipsum dolor sit" Background="White" />
+
+		<GridSplitter Grid.Column="5" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Red" />
+
+		<telerik:RadExpander Header="Right Panel" ExpandDirection="Right"  Width="Auto" IsExpanded="True" Background="#BFDBFF" Grid.Column="6" HorizontalAlignment="Stretch" PreviewCollapsed="RadExpander_PreviewCollapsed_1" >
+			<Grid>
+				<TextBlock Grid.Column="1" Text="Lorem ipsum dolor sit" Background="White"/>
+			</Grid>
+		</telerik:RadExpander>
+	</Grid>
+</Window>

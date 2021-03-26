@@ -23,8 +23,10 @@ namespace RedditWPF
 		public MainWindow()
 		{
 			InitializeComponent();
-			var appSettings = ConfigurationManager.AppSettings;
-
+			
+			MainViewModel vm = new MainViewModel();
+			this.DataContext = vm;
+			RedditService rs = new RedditService();
 		}
 
 		private void RadExpander_PreviewCollapsed(object sender, Telerik.Windows.RadRoutedEventArgs e)

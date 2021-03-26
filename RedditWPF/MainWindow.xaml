@@ -13,9 +13,9 @@
 			</DataTemplate>
 		</Grid.Resources>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition x:Name="firstColumn" Width="200"/>
+			<ColumnDefinition x:Name="firstColumn" Width="200" MaxWidth="250"/>
 			<ColumnDefinition Width="5"/>
-			<ColumnDefinition x:Name="midColumn" Width="Auto"/>
+			<ColumnDefinition x:Name="midColumn" Width="300" MaxWidth="500"/>
 			<ColumnDefinition Width="5"/>
 			<ColumnDefinition />
 			<ColumnDefinition Width="5"/>
@@ -36,9 +36,15 @@
 		<GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Red" />
 
 		<telerik:RadExpander Grid.Column="2" Header="Left Panel" ExpandDirection="Left" IsExpanded="True" Background="#BFDBFF"  HorizontalAlignment="Stretch" PreviewCollapsed="RadExpander_PreviewCollapsed_2">
-			<Grid>
-				<TextBlock  Text="Lorem ipsum dolor sit" Background="White"/>
-			</Grid>
+
+			<telerik:RadGridView   
+                     ItemsSource="{Binding Posts}"  
+                     AutoGenerateColumns="False" RowIndicatorVisibility="Collapsed" ShowColumnHeaders="False"  ShowGroupPanel="False" SelectionMode="Single" SelectionUnit="FullRow"  >
+				<telerik:RadGridView.Columns>
+					<telerik:GridViewDataColumn DataMemberBinding="{Binding Score}" Header="Score" Width="30"/>
+					<telerik:GridViewDataColumn DataMemberBinding="{Binding Title}" Header="Title" Width="*" TextWrapping="Wrap"/>
+				</telerik:RadGridView.Columns>
+			</telerik:RadGridView>
 		</telerik:RadExpander>
 
 		<GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Red" />

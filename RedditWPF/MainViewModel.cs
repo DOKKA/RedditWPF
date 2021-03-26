@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reddit.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -48,10 +49,23 @@ namespace RedditWPF
 				{
                     rs.LoadSubreddit(_subreddit);
 				}
-                rs.GetPosts(_subreddit);
-
+                Posts = new ObservableCollection<Post>(rs.GetPosts(_subreddit));
                 RaisePropertyChanged();
 			}
 		}
+
+        private ObservableCollection<Post> _posts;
+        public ObservableCollection<Post> Posts
+        {
+            get
+            {
+                return this._posts;
+            }
+            set
+            {
+                this._posts = value;
+                RaisePropertyChanged();
+            }
+        }
     }
 }

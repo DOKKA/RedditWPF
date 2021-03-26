@@ -36,11 +36,9 @@ namespace RedditWPF
 			s.SubredditObj = subreddit;
 		}
 
-		public void GetPosts(SubredditItem s)
+		public List<Post> GetPosts(SubredditItem s)
 		{
-			var x = s.SubredditObj.Posts.Hot;
-			var z = x;
-	
+			return s.SubredditObj.Posts.Hot;
 		}
 
 	}

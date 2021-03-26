@@ -19,8 +19,8 @@ namespace RedditWPF
 			rs = new RedditService();
 
             Subreddits = new ObservableCollection<SubredditItem>(rs.GetSubreddits());
-
-		}
+            
+        }
 
 
         private ObservableCollection<SubredditItem> _subreddits;
@@ -52,6 +52,10 @@ namespace RedditWPF
                     rs.LoadSubreddit(_subreddit);
 				}
                 Posts = new ObservableCollection<Post>(rs.GetPosts(_subreddit));
+                
+                //this is stupid, but it fixes the browser issues
+                Browser.Navigate((Uri)null);
+                
                 RaisePropertyChanged();
 			}
 		}
@@ -89,17 +93,21 @@ namespace RedditWPF
 		{
             if(SelectedPost != null)
 			{
-                Browser.Source = new Uri("about:blank");
+
+
+                Browser.Navigate((Uri)null);
+                
                 if (SelectedPost.GetType() == typeof(SelfPost))
                 {
                     SelfPost self = (SelfPost)SelectedPost;
-                    Browser.NavigateToString(self.SelfTextHTML);
+                    Browser.NavigateToString("<html><body>"+self.SelfTextHTML+"</body></html>");
 
                 }
                 else if (SelectedPost.GetType() == typeof(LinkPost))
                 {
-                    LinkPost link = (LinkPost)SelectedPost;
-                    Browser.Source = new Uri(link.URL);
+                    //use preview here instead
+                    //LinkPost link = (LinkPost)SelectedPost;
+                    //Browser.Source = new Uri(link.URL);
                 }
             }
 

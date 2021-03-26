@@ -26,7 +26,9 @@ namespace RedditWPF
 			
 			MainViewModel vm = new MainViewModel();
 			this.DataContext = vm;
+			vm.Browser = browser;
 			RedditService rs = new RedditService();
+			
 		}
 
 		private void RadExpander_PreviewCollapsed(object sender, Telerik.Windows.RadRoutedEventArgs e)

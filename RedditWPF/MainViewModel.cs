@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Telerik.Windows.Controls;
 
 namespace RedditWPF
@@ -12,6 +13,7 @@ namespace RedditWPF
 	public class MainViewModel : ViewModelBase
 	{
 		RedditService rs;
+        public WebBrowser Browser { get; set; }
 		public MainViewModel()
 		{
 			rs = new RedditService();
@@ -67,5 +69,40 @@ namespace RedditWPF
                 RaisePropertyChanged();
             }
         }
+
+        private Post _post;
+        public Post SelectedPost
+        {
+            get
+            {
+                return this._post;
+            }
+            set
+            {
+                this._post = value;
+                SetBrowserContent();
+                RaisePropertyChanged();
+            }
+        }
+
+        public void SetBrowserContent()
+		{
+            if(SelectedPost != null)
+			{
+                Browser.Source = new Uri("about:blank");
+                if (SelectedPost.GetType() == typeof(SelfPost))
+                {
+                    SelfPost self = (SelfPost)SelectedPost;
+                    Browser.NavigateToString(self.SelfTextHTML);
+
+                }
+                else if (SelectedPost.GetType() == typeof(LinkPost))
+                {
+                    LinkPost link = (LinkPost)SelectedPost;
+                    Browser.Source = new Uri(link.URL);
+                }
+            }
+
+		}
     }
 }

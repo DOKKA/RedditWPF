@@ -15,7 +15,7 @@ namespace RedditWPF
 		{
 			rs = new RedditService();
 
-            Subreddits = new ObservableCollection<Subreddit>(rs.getSubreddits());
+            Subreddits = new ObservableCollection<Subreddit>(rs.GetSubreddits());
 
 		}
 
@@ -33,5 +33,20 @@ namespace RedditWPF
                 RaisePropertyChanged();
             }
         }
+
+        private Subreddit _subreddit;
+        public Subreddit SelectedSubreddit
+		{
+			get
+			{
+                return this._subreddit;
+			}
+			set
+			{
+                this._subreddit = value;
+                
+                RaisePropertyChanged();
+			}
+		}
     }
 }

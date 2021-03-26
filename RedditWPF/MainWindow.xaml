@@ -13,7 +13,7 @@
 			</DataTemplate>
 		</Grid.Resources>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition x:Name="firstColumn" Width="Auto"/>
+			<ColumnDefinition x:Name="firstColumn" Width="200"/>
 			<ColumnDefinition Width="5"/>
 			<ColumnDefinition x:Name="midColumn" Width="Auto"/>
 			<ColumnDefinition Width="5"/>
@@ -24,7 +24,11 @@
 
 		<telerik:RadExpander Header="Subreddits" ExpandDirection="Left" IsExpanded="True" Background="#BFDBFF" Grid.Column="0" HorizontalAlignment="Stretch"  PreviewCollapsed="RadExpander_PreviewCollapsed">
 
-			<telerik:RadListBox ItemsSource="{Binding Subreddits}" ItemTemplate="{StaticResource ListBoxCustomItemTemplate}" VerticalAlignment="Stretch">
+			<telerik:RadListBox 
+				ItemsSource="{Binding Subreddits}" 
+				ItemTemplate="{StaticResource ListBoxCustomItemTemplate}" 
+				SelectedItem="{Binding SelectedSubreddit}"
+				VerticalAlignment="Stretch">
 
 				</telerik:RadListBox>
 

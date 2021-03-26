@@ -24,9 +24,14 @@ namespace RedditWPF
 
 		}
 
-		public List<Subreddit> getSubreddits()
+		public List<Subreddit> GetSubreddits()
 		{
 			return subreddits.Split(',').Select(s => new Subreddit { Name = s }).ToList();
+		}
+
+		public void GetPosts()
+		{
+			
 		}
 
 	}

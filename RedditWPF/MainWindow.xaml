@@ -26,11 +26,10 @@
 
 			<telerik:RadListBox 
 				ItemsSource="{Binding Subreddits}" 
-				ItemTemplate="{StaticResource ListBoxCustomItemTemplate}" 
-				SelectedItem="{Binding SelectedSubreddit}"
+				SelectedItem="{Binding SelectedSubreddit , Mode=TwoWay}"
+				DisplayMemberPath="Name"
 				VerticalAlignment="Stretch">
-
-				</telerik:RadListBox>
+			</telerik:RadListBox>
 
 		</telerik:RadExpander>
 

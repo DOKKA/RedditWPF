@@ -15,13 +15,13 @@ namespace RedditWPF
 		{
 			rs = new RedditService();
 
-            Subreddits = new ObservableCollection<Subreddit>(rs.GetSubreddits());
+            Subreddits = new ObservableCollection<SubredditItem>(rs.GetSubreddits());
 
 		}
 
 
-        private ObservableCollection<Subreddit> _subreddits;
-        public ObservableCollection<Subreddit> Subreddits
+        private ObservableCollection<SubredditItem> _subreddits;
+        public ObservableCollection<SubredditItem> Subreddits
         {
             get
             {
@@ -34,8 +34,8 @@ namespace RedditWPF
             }
         }
 
-        private Subreddit _subreddit;
-        public Subreddit SelectedSubreddit
+        private SubredditItem _subreddit;
+        public SubredditItem SelectedSubreddit
 		{
 			get
 			{
@@ -44,7 +44,12 @@ namespace RedditWPF
 			set
 			{
                 this._subreddit = value;
-                
+                if(_subreddit.SubredditObj == null)
+				{
+                    rs.LoadSubreddit(_subreddit);
+				}
+                rs.GetPosts(_subreddit);
+
                 RaisePropertyChanged();
 			}
 		}

@@ -1,4 +1,5 @@
 ﻿using Reddit;
+using Reddit.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,20 +25,29 @@ namespace RedditWPF
 
 		}
 
-		public List<Subreddit> GetSubreddits()
+		public List<SubredditItem> GetSubreddits()
 		{
-			return subreddits.Split(',').Select(s => new Subreddit { Name = s }).ToList();
+			return subreddits.Split(',').Select(s => new SubredditItem { Name = s }).ToList();
 		}
 
-		public void GetPosts()
+		public void LoadSubreddit(SubredditItem s)
 		{
-			
+			Subreddit subreddit = redditClient.Subreddit(s.Name).About();
+			s.SubredditObj = subreddit;
+		}
+
+		public void GetPosts(SubredditItem s)
+		{
+			var x = s.SubredditObj.Posts.Hot;
+			var z = x;
+	
 		}
 
 	}
 
-	public class Subreddit
+	public class SubredditItem
 	{
 		public string Name { get; set; }
+		public Subreddit SubredditObj { get; set; }
 	}
 }

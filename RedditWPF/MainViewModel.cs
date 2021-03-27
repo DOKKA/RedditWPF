@@ -85,6 +85,28 @@ namespace RedditWPF
             {
                 this._post = value;
                 SetBrowserContent();
+                if(this._post != null)
+				{
+                    this.Comments = new ObservableCollection<Comment>(_post.Comments.Top);
+				}
+				else
+				{
+                    this.Comments = null;
+				}
+                RaisePropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Comment> _comments;
+        public ObservableCollection<Comment> Comments
+        {
+            get
+            {
+                return this._comments;
+            }
+            set
+            {
+                this._comments = value;
                 RaisePropertyChanged();
             }
         }
@@ -108,8 +130,6 @@ namespace RedditWPF
 
                     LinkPost link = (LinkPost)SelectedPost;
                     string thumb = link.Thumbnail;
-					int? width = link.ThumbnailWidth;
-                    int? height = link.ThumbnailHeight;
                     Browser.NavigateToString($"<html><body> <img src='{thumb}' width='100%'   </body></html>");
                 }
             }

@@ -19,7 +19,7 @@
 			<ColumnDefinition Width="5"/>
 			<ColumnDefinition />
 			<ColumnDefinition Width="5"/>
-			<ColumnDefinition x:Name="lastColumn"  Width="Auto"/>
+			<ColumnDefinition x:Name="lastColumn"  Width="200" MaxWidth="500"/>
 		</Grid.ColumnDefinitions>
 
 		<telerik:RadExpander Header="Subreddits" ExpandDirection="Left" IsExpanded="True" Background="#BFDBFF" Grid.Column="0" HorizontalAlignment="Stretch"  PreviewCollapsed="RadExpander_PreviewCollapsed">
@@ -40,6 +40,7 @@
 			<telerik:RadGridView   
                      ItemsSource="{Binding Posts}"
 				SelectedItem="{Binding SelectedPost}"
+				IsReadOnly="True"
                      AutoGenerateColumns="False" RowIndicatorVisibility="Collapsed" ShowColumnHeaders="False"  ShowGroupPanel="False" SelectionMode="Single" SelectionUnit="FullRow"  >
 				<telerik:RadGridView.Columns>
 					<telerik:GridViewDataColumn DataMemberBinding="{Binding Score}" Header="Score" Width="30"/>
@@ -56,9 +57,12 @@
 		<GridSplitter Grid.Column="5" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Red" />
 
 		<telerik:RadExpander Header="Right Panel" ExpandDirection="Right"  Width="Auto" IsExpanded="True" Background="#BFDBFF" Grid.Column="6" HorizontalAlignment="Stretch" PreviewCollapsed="RadExpander_PreviewCollapsed_1" >
-			<Grid>
-				<TextBlock Grid.Column="1" Text="Lorem ipsum dolor sit" Background="White"/>
-			</Grid>
+			<telerik:RadTreeListView AutoGenerateColumns="False" ItemsSource="{Binding Comments}" >
+				<telerik:RadTreeListView.Columns>
+					<telerik:GridViewDataColumn DataMemberBinding="{Binding Score}" Width="40"></telerik:GridViewDataColumn>
+					<telerik:GridViewDataColumn DataMemberBinding="{Binding Body}" TextWrapping="Wrap" Width="*"></telerik:GridViewDataColumn>
+				</telerik:RadTreeListView.Columns>
+			</telerik:RadTreeListView>
 		</telerik:RadExpander>
 	</Grid>
 </Window>

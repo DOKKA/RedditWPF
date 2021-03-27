@@ -105,12 +105,17 @@ namespace RedditWPF
                 }
                 else if (SelectedPost.GetType() == typeof(LinkPost))
                 {
-                    //use preview here instead
-                    //LinkPost link = (LinkPost)SelectedPost;
-                    //Browser.Source = new Uri(link.URL);
+
+                    LinkPost link = (LinkPost)SelectedPost;
+                    string thumb = link.Thumbnail;
+					int? width = link.ThumbnailWidth;
+                    int? height = link.ThumbnailHeight;
+                    Browser.NavigateToString($"<html><body> <img src='{thumb}' width='100%'   </body></html>");
                 }
             }
 
 		}
+
+
     }
 }

@@ -57,9 +57,13 @@
 		<GridSplitter Grid.Column="5" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Red" />
 
 		<telerik:RadExpander Header="Right Panel" ExpandDirection="Right"  Width="Auto" IsExpanded="True" Background="#BFDBFF" Grid.Column="6" HorizontalAlignment="Stretch" PreviewCollapsed="RadExpander_PreviewCollapsed_1" >
-			<telerik:RadTreeListView AutoGenerateColumns="False" ItemsSource="{Binding Comments}" >
+			<telerik:RadTreeListView AutoGenerateColumns="False" ItemsSource="{Binding Comments}" RowIndicatorVisibility="Collapsed" ShowColumnHeaders="False" >
+				<telerik:RadTreeListView.ChildTableDefinitions>
+					<telerik:TreeListViewTableDefinition ItemsSource="{Binding Replies}">
+					</telerik:TreeListViewTableDefinition>
+				</telerik:RadTreeListView.ChildTableDefinitions>
 				<telerik:RadTreeListView.Columns>
-					<telerik:GridViewDataColumn DataMemberBinding="{Binding Score}" Width="40"></telerik:GridViewDataColumn>
+					<!--<telerik:GridViewDataColumn DataMemberBinding="{Binding Score}" Width="40"></telerik:GridViewDataColumn>-->
 					<telerik:GridViewDataColumn DataMemberBinding="{Binding Body}" TextWrapping="Wrap" Width="*"></telerik:GridViewDataColumn>
 				</telerik:RadTreeListView.Columns>
 			</telerik:RadTreeListView>
